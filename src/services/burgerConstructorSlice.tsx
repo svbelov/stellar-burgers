@@ -106,6 +106,9 @@ const burgerConstructorSlice = createSlice({
         state.orderRequest = false;
         state.error = action.error.message;
       });
+  },
+  selectors: {
+    selectConstructorItems: (state) => state.constructorItems
   }
 });
 
@@ -118,3 +121,5 @@ export const {
   moveDownIngredient,
   resetOrder
 } = burgerConstructorSlice.actions;
+
+export const { selectConstructorItems } = burgerConstructorSlice.selectors;
