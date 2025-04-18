@@ -13,7 +13,7 @@ import {
   updateUserApi
 } from '@api';
 
-export type TUserState = {
+type TUserState = {
   isAuthChecked: boolean;
   isAuthenticated: boolean;
   user: TUser | null;
@@ -23,7 +23,7 @@ export type TUserState = {
   ordersRequest: boolean;
 };
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   isAuthChecked: false,
   isAuthenticated: false,
   user: null,

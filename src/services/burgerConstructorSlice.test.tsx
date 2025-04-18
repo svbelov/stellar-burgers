@@ -5,7 +5,7 @@ import burgerConstructorReducer, {
   moveUpIngredient,
   moveDownIngredient,
   resetOrder,
-  TConstructorState
+  initialState
 } from './burgerConstructorSlice';
 import { TConstructorIngredient } from '@utils-types';
 
@@ -56,15 +56,6 @@ const ingredient2: TConstructorIngredient = {
 
 describe('Тестирование экшенов конструктора бургера', () => {
   test('добавить ингредиент - булку', () => {
-    const initialState: TConstructorState = {
-      constructorItems: {
-        bun: null,
-        ingredients: []
-      },
-      orderRequest: false,
-      orderModalData: null,
-      error: null
-    };
     const newState = burgerConstructorReducer(initialState, addIngredient(bun));
     expect(newState.constructorItems.bun).toMatchObject({
       ...bun,
@@ -73,15 +64,6 @@ describe('Тестирование экшенов конструктора бу�
   });
 
   test('добавить ингредиент - начинку', () => {
-    const initialState: TConstructorState = {
-      constructorItems: {
-        bun: null,
-        ingredients: []
-      },
-      orderRequest: false,
-      orderModalData: null,
-      error: null
-    };
     const newState = burgerConstructorReducer(
       initialState,
       addIngredient(ingredient1)
@@ -93,17 +75,15 @@ describe('Тестирование экшенов конструктора бу�
   });
 
   test('удалить ингредиент', () => {
-    const initialState: TConstructorState = {
+    const prevState = {
+      ...initialState,
       constructorItems: {
         bun: bun,
         ingredients: [ingredient1, ingredient2]
-      },
-      orderRequest: false,
-      orderModalData: null,
-      error: null
+      }
     };
     const newState = burgerConstructorReducer(
-      initialState,
+      prevState,
       removeIngredient(ingredient1)
     );
     expect(newState.constructorItems.ingredients).toEqual([ingredient2]);
@@ -111,19 +91,14 @@ describe('Тестирование экшенов конструктора бу�
   });
 
   test('Сдвинуть ингредиент вверх', () => {
-    const initialState: TConstructorState = {
+    const prevState = {
+      ...initialState,
       constructorItems: {
         bun: bun,
         ingredients: [ingredient1, ingredient2]
-      },
-      orderRequest: false,
-      orderModalData: null,
-      error: null
+      }
     };
-    const newState = burgerConstructorReducer(
-      initialState,
-      moveUpIngredient(1)
-    );
+    const newState = burgerConstructorReducer(prevState, moveUpIngredient(1));
     expect(newState.constructorItems.ingredients).toEqual([
       ingredient2,
       ingredient1
@@ -132,19 +107,14 @@ describe('Тестирование экшенов конструктора бу�
   });
 
   test('Сдвинуть ингредиент вниз', () => {
-    const initialState: TConstructorState = {
+    const prevState = {
+      ...initialState,
       constructorItems: {
         bun: bun,
         ingredients: [ingredient1, ingredient2]
-      },
-      orderRequest: false,
-      orderModalData: null,
-      error: null
+      }
     };
-    const newState = burgerConstructorReducer(
-      initialState,
-      moveDownIngredient(0)
-    );
+    const newState = burgerConstructorReducer(prevState, moveDownIngredient(0));
     expect(newState.constructorItems.ingredients).toEqual([
       ingredient2,
       ingredient1
@@ -153,16 +123,14 @@ describe('Тестирование экшенов конструктора бу�
   });
 
   test('Сбросить конструктор в исходное состояние', () => {
-    const initialState: TConstructorState = {
+    const prevState = {
+      ...initialState,
       constructorItems: {
         bun: bun,
         ingredients: [ingredient1, ingredient2]
-      },
-      orderRequest: false,
-      orderModalData: null,
-      error: null
+      }
     };
-    const newState = burgerConstructorReducer(initialState, resetOrder());
+    const newState = burgerConstructorReducer(prevState, resetOrder());
     expect(newState.constructorItems).toEqual({
       bun: null,
       ingredients: []

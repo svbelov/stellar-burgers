@@ -6,7 +6,7 @@ import userReducer, {
   loginUser,
   logoutUser,
   registerUser,
-  TUserState,
+  initialState,
   updateUser
 } from './userSlice';
 import { TOrder, TUser } from '@utils-types';
@@ -19,16 +19,6 @@ const testUser: TUser = {
 const testUserUpdated: TUser = {
   email: 'update-test@mail.ru',
   name: 'UpdatedTestName'
-};
-
-const initialState: TUserState = {
-  isAuthChecked: false,
-  isAuthenticated: false,
-  user: null,
-  loginUserError: null,
-  loginUserRequest: false,
-  orders: [],
-  ordersRequest: false
 };
 
 const testOrders: TOrder[] = [

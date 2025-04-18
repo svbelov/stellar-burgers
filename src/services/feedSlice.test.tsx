@@ -2,7 +2,7 @@ import { expect, test, describe } from '@jest/globals';
 import feedReducer, {
   getFeeds,
   getOrderByNumber,
-  TFeedState
+  initialState
 } from './feedSlice';
 import { TOrder } from '@utils-types';
 
@@ -19,15 +19,6 @@ const testOrder: TOrder = {
     '643d69a5c3f7b9001cfa0941',
     '643d69a5c3f7b9001cfa093c'
   ]
-};
-
-const initialState: TFeedState = {
-  orders: [],
-  loading: false,
-  error: null,
-  total: 0,
-  totalToday: 0,
-  orderByNumber: null
 };
 
 describe('Тестирование экшенов слайса ленты заказов', () => {

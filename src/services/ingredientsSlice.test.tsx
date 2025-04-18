@@ -1,7 +1,7 @@
 import { expect, test, describe } from '@jest/globals';
 import ingredientsReducer, {
   getIngredients,
-  TIngredientsState
+  initialState
 } from './ingredientsSlice';
 import { TIngredient } from '@utils-types';
 
@@ -17,12 +17,6 @@ const testIngredient: TIngredient = {
   image: 'https://code.s3.yandex.net/react/code/bun-02.png',
   image_mobile: 'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
   image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png'
-};
-
-const initialState: TIngredientsState = {
-  ingredients: [],
-  loading: false,
-  error: null
 };
 
 describe('Тестирование экшенов слайса ингредиентов', () => {
