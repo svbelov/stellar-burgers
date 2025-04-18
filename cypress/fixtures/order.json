@@ -1,0 +1,63 @@
+{
+    "success": true,
+    "name": "Бургер тест",
+    "order": {
+        "ingredients": [
+            {
+                "_id": "1",
+                "name": "Ингредиент1-булка",
+                "type": "bun",
+                "proteins": 80,
+                "fat": 24,
+                "carbohydrates": 53,
+                "calories": 420,
+                "price": 1255,
+                "image": "https://code.s3.yandex.net/react/code/bun-02.png",
+                "image_mobile": "https://code.s3.yandex.net/react/code/bun-02-mobile.png",
+                "image_large": "https://code.s3.yandex.net/react/code/bun-02-large.png",
+                "__v": 0
+            },
+            {
+                "_id": "2",
+                "name": "Ингредиент2-начинка",
+                "type": "main",
+                "proteins": 420,
+                "fat": 142,
+                "carbohydrates": 242,
+                "calories": 4242,
+                "price": 424,
+                "image": "https://code.s3.yandex.net/react/code/meat-01.png",
+                "image_mobile": "https://code.s3.yandex.net/react/code/meat-01-mobile.png",
+                "image_large": "https://code.s3.yandex.net/react/code/meat-01-large.png",
+                "__v": 0
+            },
+            {
+                "_id": "1",
+                "name": "Ингредиент1-булка",
+                "type": "bun",
+                "proteins": 80,
+                "fat": 24,
+                "carbohydrates": 53,
+                "calories": 420,
+                "price": 1255,
+                "image": "https://code.s3.yandex.net/react/code/bun-02.png",
+                "image_mobile": "https://code.s3.yandex.net/react/code/bun-02-mobile.png",
+                "image_large": "https://code.s3.yandex.net/react/code/bun-02-large.png",
+                "__v": 0
+            }
+        ],
+        "_id": "6800fc5fe8e61d001cec308b",
+        "owner": {
+            "name": "Василий",
+            "email": "test@mail.ru",
+            "createdAt": "2025-03-17T07:55:54.806Z",
+            "updatedAt": "2025-03-29T19:12:57.253Z"
+        },
+        "status": "done",
+        "name": "Бургер тест",
+        "createdAt": "2025-04-07T13:04:31.799Z",
+        "updatedAt": "2025-04-07T13:04:32.473Z",
+        "number": 74812,
+        "price": 2934
+    }
+}

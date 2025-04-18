@@ -7,7 +7,7 @@ import {
 } from '@reduxjs/toolkit';
 import { orderBurgerApi } from '@api';
 
-type TConstructorState = {
+export type TConstructorState = {
   constructorItems: {
     bun: TIngredient | null;
     ingredients: TConstructorIngredient[];

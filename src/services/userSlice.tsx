@@ -13,7 +13,7 @@ import {
   updateUserApi
 } from '@api';
 
-type TUserState = {
+export type TUserState = {
   isAuthChecked: boolean;
   isAuthenticated: boolean;
   user: TUser | null;
@@ -89,6 +89,26 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+
+      // Register
+      .addCase(registerUser.pending, (state) => {
+        state.isAuthenticated = false;
+        state.user = null;
+        state.loginUserError = null;
+        state.loginUserRequest = true;
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.isAuthenticated = false;
+        state.user = null;
+        state.loginUserError = action.error.message;
+        state.loginUserRequest = false;
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.isAuthenticated = true;
+        state.user = action.payload;
+        state.loginUserRequest = false;
+      })
+
       // Login
       .addCase(loginUser.pending, (state) => {
         state.loginUserRequest = true;
@@ -103,6 +123,23 @@ export const userSlice = createSlice({
         state.user = action.payload;
         state.loginUserRequest = false;
         state.isAuthenticated = true;
+        state.isAuthChecked = true;
+      })
+
+      // Logout
+      .addCase(logoutUser.pending, (state) => {
+        state.loginUserRequest = true;
+        state.isAuthenticated = true;
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.loginUserRequest = false;
+        state.isAuthChecked = false;
+        state.loginUserError = action.error.message;
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.user = null;
+        state.loginUserRequest = false;
+        state.isAuthenticated = false;
         state.isAuthChecked = true;
       })
 
@@ -126,42 +163,6 @@ export const userSlice = createSlice({
         state.user = action.payload.user;
         state.loginUserError = null;
         state.loginUserRequest = false;
-      })
-
-      // Register
-      .addCase(registerUser.pending, (state) => {
-        state.isAuthenticated = false;
-        state.user = null;
-        state.loginUserError = null;
-        state.loginUserRequest = true;
-      })
-      .addCase(registerUser.rejected, (state, action) => {
-        state.isAuthenticated = false;
-        state.user = null;
-        state.loginUserError = action.error.message;
-        state.loginUserRequest = false;
-      })
-      .addCase(registerUser.fulfilled, (state, action) => {
-        state.isAuthenticated = true;
-        state.user = action.payload;
-        state.loginUserRequest = false;
-      })
-
-      // Logout
-      .addCase(logoutUser.pending, (state) => {
-        state.loginUserRequest = true;
-        state.isAuthenticated = true;
-      })
-      .addCase(logoutUser.rejected, (state, action) => {
-        state.loginUserRequest = false;
-        state.isAuthChecked = false;
-        state.loginUserError = action.error.message;
-      })
-      .addCase(logoutUser.fulfilled, (state) => {
-        state.user = null;
-        state.loginUserRequest = false;
-        state.isAuthenticated = false;
-        state.isAuthChecked = true;
       })
 
       // Update user

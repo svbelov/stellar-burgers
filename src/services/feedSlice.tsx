@@ -2,7 +2,7 @@ import { TOrder } from '@utils-types';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getFeedsApi, getOrderByNumberApi } from '@api';
 
-type TFeedState = {
+export type TFeedState = {
   orders: TOrder[];
   loading: boolean;
   error: string | null | undefined;
