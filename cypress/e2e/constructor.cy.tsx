@@ -5,7 +5,9 @@ const modal = '[data-cy="modal"]';
 const closeButton = '[data-cy="close-button"]';
 
 beforeEach(function () {
-  cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients.json' });
+  cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients.json' }).as(
+    'getIngredients'
+  );
   cy.intercept('GET', 'api/auth/user', { fixture: 'user.json' });
   cy.intercept('POST', 'api/orders', { fixture: 'order.json' });
 
@@ -17,6 +19,7 @@ beforeEach(function () {
 
   cy.viewport(1366, 768);
   cy.visit('/');
+  cy.wait('@getIngredients');
 });
 
 afterEach(function () {
