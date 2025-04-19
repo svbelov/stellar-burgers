@@ -11,7 +11,7 @@ type TFeedState = {
   orderByNumber: TOrder | null;
 };
 
-const initialState: TFeedState = {
+export const initialState: TFeedState = {
   orders: [],
   loading: false,
   error: null,
